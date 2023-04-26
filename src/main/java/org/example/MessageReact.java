@@ -13,13 +13,19 @@ public class MessageReact extends ListenerAdapter {
         if (event.getMessage().isFromGuild()) {
             System.out.println("Message from " + event.getAuthor().getName() + ":" + event.getMessage().getContentDisplay());
         }
+
+
         if (event.getMessage().getContentRaw().equals("!tagesplan")) {
             event.getChannel().sendMessage(getTagesplan()).queue();
         }
+
+
         if (event.getMessage().getContentRaw().equals("!essensplan")) {
-            HttpResponse<String> response = Unirest.get("http://localhost/schule/essensplan.php")
+            HttpResponse<String> response = Unirest.get("")
                     .asString();
             event.getChannel().sendMessage(response.getBody()).queue();
         }
+
+
     }
 }
